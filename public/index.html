@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GS Log In/Log Out Monitoring — Media Track</title>
+  <meta name="description" content="GS Log In/Log Out Monitoring System — Information Logistics System by Media Track. Automated 8-Hour Shift, OT, Undertime, Late Detection, Break Management, and Attendance Violations Tracking." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 1.5rem;
+      padding: 3rem 2.5rem;
+      max-width: 540px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+    .logo {
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .logo-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+    .logo-text { line-height: 1; }
+    .logo-media {
+      font-size: 1.5rem;
+      font-weight: 900;
+      font-style: italic;
+      color: #2dd4bf;
+      letter-spacing: -0.02em;
+    }
+    .logo-track {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #fff;
+      margin-top: -2px;
+    }
+    .logo-sub {
+      display: block;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #f97316;
+      margin-top: 0.4rem;
+      white-space: nowrap;
+    }
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    h1 .badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 0.375rem;
+      background: rgba(59,130,246,0.15);
+      color: #93c5fd;
+      border: 1px solid rgba(59,130,246,0.3);
+    }
+    .subtitle {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-bottom: 2rem;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .feat {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      padding: 0.45rem 0.6rem;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 0.5rem;
+    }
+    .feat strong { color: #e2e8f0; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+      border: none;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.1s;
+      box-shadow: 0 4px 14px rgba(16,185,129,0.3);
+    }
+    .btn:hover { opacity: 0.92; }
+    .btn:active { transform: scale(0.97); }
+    .btn svg { width: 20px; height: 20px; }
+    .leaders {
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #334155;
+    }
+    .leaders h3 {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #2dd4bf;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .leader {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+    .leader-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 0.375rem;
+      background: rgba(45,212,191,0.12);
+      border: 1px solid rgba(45,212,191,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #5eead4;
+      flex-shrink: 0;
+    }
+    .leader-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      line-height: 1.2;
+    }
+    .leader-email {
+      font-size: 0.65rem;
+      color: #64748b;
+    }
+    .leader-email a { color: #64748b; text-decoration: none; }
+    .leader-email a:hover { color: #2dd4bf; }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.65rem;
+      color: #475569;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <!-- Media Track Logo -->
+    <div class="logo">
+      <span class="logo-dot"></span>
+      <div class="logo-text">
+        <span class="logo-media">Media</span>
+        <span class="logo-track">Track</span>
+        <span class="logo-sub">INFORMATION LOGISTICS SYSTEM</span>
+      </div>
+    </div>
+
+    <h1>
+      GS Log In / Log Out
+      <span class="badge">Monitoring</span>
+    </h1>
+    <p class="subtitle">
+      Automated 8-Hour Shift, OT, Undertime, Late Detection, Break Management &amp; Attendance Violations
+    </p>
+
+    <div class="features">
+      <div class="feat"><strong>Clock In/Out</strong> — Real-time shift tracking</div>
+      <div class="feat"><strong>Break Mgmt</strong> — Coffee &amp; Meal breaks</div>
+      <div class="feat"><strong>OT &amp; Undertime</strong> — Auto-calculated</div>
+      <div class="feat"><strong>Late Detection</strong> — Duty schedule rules</div>
+      <div class="feat"><strong>Excel Export</strong> — Daily, Weekly, Monthly</div>
+      <div class="feat"><strong>Violations</strong> — Warning &amp; Account Lock</div>
+    </div>
+
+    <a href="/" class="btn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/></svg>
+      Launch Monitoring System
+    </a>
+
+    <!-- GS Team Leaders -->
+    <div class="leaders">
+      <h3>GS Team Leaders</h3>
+      <div class="leader">
+        <div class="leader-avatar">BP</div>
+        <div>
+          <div class="leader-name">Bonnie Lofranco Patio</div>
+          <div class="leader-email"><a href="mailto:bonnie.patio@mediatrack.org">bonnie.patio@mediatrack.org</a></div>
+        </div>
+      </div>
+      <div class="leader">
+        <div class="leader-avatar">TL</div>
+        <div>
+          <div class="leader-name">Thomas Jayson Lorenzo</div>
+          <div class="leader-email"><a href="mailto:thomas.lorenzo@mediatrack.org">thomas.lorenzo@mediatrack.org</a></div>
+        </div>
+      </div>
+      <div class="leader">
+        <div class="leader-avatar">MN</div>
+        <div>
+          <div class="leader-name">Marivel Noquillo</div>
+          <div class="leader-email"><a href="mailto:marivel.noquillo@mediatrack.org">marivel.noquillo@mediatrack.org</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="footer">&copy; 2026 Media Track — Information Logistics System. All rights reserved.</p>
+</body>
+</html>
