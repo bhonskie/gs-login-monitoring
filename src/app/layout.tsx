@@ -10,7 +10,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-slate-950 text-slate-100 antialiased font-sans">{children}</body>
+      <body className="bg-slate-950 text-slate-100 antialiased font-sans">
+        {/* Ambient Glow Spheres */}
+        <div className="glow-sphere glow-1" aria-hidden="true" />
+        <div className="glow-sphere glow-2" aria-hidden="true" />
+        {children}
+      </body>
     </html>
   );
 }

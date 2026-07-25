@@ -108,7 +108,7 @@ export function AdminLoginModal({ isOpen, onClose, onSuccess }: AdminLoginModalP
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 animate-fadeIn">
-      <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full shadow-2xl relative text-slate-100 overflow-hidden">
+      <div className="glass-card rounded-2xl max-w-md w-full shadow-2xl relative text-slate-100 overflow-hidden">
         <div className="h-1 w-full bg-gradient-to-r from-amber-500 via-amber-400 to-orange-500" />
 
         <div className="p-6">
